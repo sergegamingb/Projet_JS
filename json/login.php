@@ -4,15 +4,18 @@ include_once 'DataBase.php';
 
 $obj = new stdClass();
 $obj->success=false;
+$found = false;
 
-
-$found=false;
+$username = htmlspecialchars($_POST['username']);
+$password = htmlspecialchars($_POST['password']);
 //$found = true;
-if ($_POST['username'] =='oui')
-  $found = true;
-if($found) {
+if (get('identifiant',$username,$password)) {
+    $found=true;
+}
+
+if ($found) {
     $obj->success = true;
-    $_SESSION['user']=1;
+    $_SESSION['user']=$username;
 }
 $obj->message ="Mauvais identifiant ou mot de passe";
 

@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
     $(() => {
         $.ajax({
@@ -7,8 +7,8 @@
         }).done(function (data) {
             if (data) {
                 /* le user est connecté */
-                $('body').append(
-                    $('<div class="card-header"></div><div class="d-flex justify-content-around" ><input type="submit" value="Déconnexion" class="btn login_btn"></div>')
+                $('#accueil').append(
+                    $('<div><input type="submit" value="Déconnexion" class="btn login_btn "></div>')
                         .on('click', function () {
                             $.ajax({
                                 url: 'json/logout.php',
@@ -18,6 +18,49 @@
                             });
                         })
                 );
+                $('#button')
+                    .append('<div class="material-button-anim">' +
+                        '<div role="button" class="material-button">' +
+                        '<span class="fa fa-plus" aria-hidden="true">' +
+                        '</span>' +
+                        '</div>' +
+                        '</div>')
+                    .one("click", function () {
+                        $.ajax({
+                            url: 'json/log.php',
+                            method: 'get'
+                        }).done(function () {
+                            $('.material-button-anim').fadeOut();
+                            $('#addNote').append('<div class="card">' +
+                                '<div class="card-body">' +
+                                '<textarea type="text" name="mNote" class="form-control" placeholder="Écrivez votre note ici">' +
+                                '</textarea>' +
+                                '<div class="d-flex justify-content-center" id="accueil">' +
+                                '<div role="button" class="btn login_btn addon">Choisir une date</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>');
+                            $('.addon').one('click', function () {
+                                $('#addDate').append('<div class="card"><div class="card-body">' +
+                                    '<input type="date"  name="dates" max="9999-12-31" min="1000-01-01" class="form-control">' +
+                                    '<input type="time" name="hour" max="839:59" min="-839:59" class="form-control">' +
+                                    '<div class="d-flex justify-content-center msg" id="messageError"></div>' +
+                                    '<div class="d-flex justify-content-center" id="accueil">' +
+                                    '<input type="submit" value="Ajouter note" class="btn login_btn" id="addDate"></div>' +
+                                    '</div></div>')
+                                $('.addon').remove();
+                            });
+                        });
+                    });
+                $.ajax({
+                    url: 'json/log.php',
+                    method: 'post',
+                    data: $(this).serialize()
+                }).done(function (data) {
+                    if (
+                        data.success === true)
+                        $('.name').append('Connecté(e) en tant que : ' + data.user)
+                })
             } else {
                 /* le user n'est pas connecté */
                 window.location.href = 'login.html';
@@ -27,6 +70,6 @@
         });
     });
 
-}) ();
+})();
 
 
