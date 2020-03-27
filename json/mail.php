@@ -1,7 +1,6 @@
 <?php
 
 require_once "DataBase.php";
-session_start();
 
 $id = getElement('Id',$pseudo,'identifiant','User');
 $dateEnvoi = getMail('dateEnvoi',$id);
