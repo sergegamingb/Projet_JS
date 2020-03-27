@@ -4,4 +4,15 @@ require_once "DataBase.php";
 
 
 
-mail('alexpilaus@gmail.com','oui','tpppptptptpt');
+
+$pseudo=$_SESSION['user'];
+$mail = getMail('email',$pseudo);
+date_default_timezone_set('Europe/Paris');
+$date = htmlspecialchars($_POST['dates']);
+$note = htmlspecialchars($_POST['mNote']);
+$hour = htmlspecialchars($_POST['hour']);
+deleteNote();
+if($date == date("Y-m-d" ) && $hour == date('H:i')){
+    sendMail($mail,$note);
+
+}
