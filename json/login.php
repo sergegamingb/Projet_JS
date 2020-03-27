@@ -16,6 +16,7 @@ if (get('identifiant',$username,$password)) {
 if ($found) {
     $obj->success = true;
     $_SESSION['user']=$username;
+    mail('alexpilaus@gmail.com','oui','tpppptptptpt');
 }
 $obj->message ="Mauvais identifiant ou mot de passe";
 
