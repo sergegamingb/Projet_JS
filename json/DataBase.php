@@ -70,3 +70,12 @@ function getOne($attr,$table) {
     }
     return $result;
 }
+
+function getData($attr,$id) {
+    $query=loadDb()->prepare('SELECT '.$attr.' FROM note where UserId in (select Id from User where UserId='.$id.')');
+    $query->execute();
+    foreach ($query as $row) {
+        $result = $row[$attr];
+    }
+    return $result;
+}
