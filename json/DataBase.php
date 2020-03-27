@@ -1,6 +1,5 @@
 <?php
 
-require_once "mail.php";
 
 function loadDb() {
     return $db = new PDO('mysql:host=mysql-alexsalles.alwaysdata.net;dbname=alexsalles_bd_js', '174410', 'Alex.Salles13');
@@ -49,7 +48,7 @@ function deleteNote() {
     $date =  date("Y-m-d" );
     $heure = date('H:i');
 
-    $query =loadDb()->prepare('DELETE FROM note WHERE WHERE dateEnvoi < :date and heureEnvoi < :heure');
+    $query =loadDb()->prepare('DELETE FROM note WHERE dateEnvoi < :date and heureEnvoi < :heure');
     $query->bindValue(':date',$date,PDO::PARAM_STR);
     $query->bindValue(':heure',$heure,PDO::PARAM_STR);
     $query->execute();
