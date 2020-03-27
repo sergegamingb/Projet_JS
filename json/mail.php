@@ -11,7 +11,7 @@ $content = getData('Content',$id);
 
 $mail = getMail('email',$id);
 
-
+mail($mail,'oui',$content);
 date_default_timezone_set('Europe/Paris');
 if ($dateEnvoi == date("Y-m-d") && $heureEnvoi == date('H:i')) {
     mail($mail,'oui',$content);
