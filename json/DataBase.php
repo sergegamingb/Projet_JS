@@ -6,9 +6,9 @@ function loadDb() {
 }
 
 
-function getMail ($attr,$pseudo) {
-    $query =loadDb()->prepare('SELECT ' . $attr . ' FROM User WHERE identifiant= :username');
-    $query->bindValue(':username', $pseudo, PDO::PARAM_STR);
+function getElement ($attr,$attr2,$attr3,$table) {
+    $query =loadDb()->prepare('SELECT ' . $attr . ' FROM '.$table.' WHERE '.$attr3.'= :attribut');
+    $query->bindValue(':attribut', $attr2, PDO::PARAM_STR);
     $query->execute();
     foreach ($query as $row) {
         $result = $row[$attr];
@@ -17,25 +17,33 @@ function getMail ($attr,$pseudo) {
 }
 
 
-function get($attribut, $pseudo, $pass)
+function getUser($attr, $attr1, $attr2,$table)
 {
-    $query =loadDb()->prepare('SELECT ' . $attribut . ' FROM User WHERE identifiant= :username AND password= :password');
-    $query->bindValue(':username', $pseudo, PDO::PARAM_STR);
-    $query->bindValue(':password', $pass, PDO::PARAM_STR);
+    $query =loadDb()->prepare('SELECT ' . $attr . ' FROM '.$table.' WHERE identifiant= :username AND password= :password');
+    $query->bindValue(':username', $attr1, PDO::PARAM_STR);
+    $query->bindValue(':password', $attr2, PDO::PARAM_STR);
     $query->execute();
     foreach ($query as $row) {
-        $result = $row[$attribut];
+        $result = $row[$attr];
     }
-
     return isset($result);
 }
-
-function InsertNote($content,$dateEnvoi,$heureEnvoi) {
-    $query=loadDb()->prepare('INSERT INTO alexsalles_bd_js.note (Content, dateEnvoi, heureEnvoi) 
+function getMail($attr,$id) {
+    $query=loadDb()->prepare('SELECT '.$attr.' from User where Id in(SELECT UserId from note where UserId ='.$id.' )');
+    $query->execute();
+    foreach ($query as $row) {
+        $result = $row[$attr];
+    }
+    return $result;
+}
+function InsertNote($content,$dateEnvoi,$heureEnvoi, $id) {
+    $query=loadDb()->prepare('INSERT INTO alexsalles_bd_js.note (Content, dateEnvoi, heureEnvoi, UserId) 
     VALUES (
     \'' .$content .'\',
     \'' .$dateEnvoi .'\',
-    \'' .$heureEnvoi .'\'
+    \'' .$heureEnvoi .'\',
+    \'' .$id .'\'
+    
     )');
     $query->execute();
 }

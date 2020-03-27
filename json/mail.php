@@ -2,17 +2,16 @@
 
 require_once "DataBase.php";
 
-
+$id = getElement('Id',$pseudo,'identifiant','User');
+$dateEnvoi = getMail('dateEnvoi',$id);
+$heureEnvoi = getMail('dateEnvoi',$id);
+$content = getMail('Content',$id);
 
 
 $pseudo=$_SESSION['user'];
-$mail = getMail('email',$pseudo);
+$mail = getMail('email',$id);
 date_default_timezone_set('Europe/Paris');
-$date = htmlspecialchars($_POST['dates']);
-$note = htmlspecialchars($_POST['mNote']);
-$hour = htmlspecialchars($_POST['hour']);
+if ($heureEnvoi == date("Y-m-d") && $heureEnvoi == date('H:i'))
+    sendMail($mail,$content);
 deleteNote();
-if($date == date("Y-m-d" ) && $hour == date('H:i')){
-    sendMail($mail,$note);
 
-}

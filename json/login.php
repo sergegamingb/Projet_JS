@@ -8,8 +8,9 @@ $found = false;
 
 $username = htmlspecialchars($_POST['username']);
 $password = htmlspecialchars($_POST['password']);
+$id = getElement('Id',$username,'identifiant','User');
 //$found = true;
-if (get('identifiant',$username,$password)) {
+if (getUser('identifiant',$username,$password,'User')) {
     $found=true;
 }
 

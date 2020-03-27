@@ -9,12 +9,11 @@ $date = htmlspecialchars($_POST['dates']);
 $note = htmlspecialchars($_POST['mNote']);
 $hour = htmlspecialchars($_POST['hour']);
 $pseudo=$_SESSION['user'];
-$mail = getMail('email',$pseudo);
-
+$id = getElement('Id',$pseudo,'identifiant','User');
 
 
 if($note != null && $date != null) {
-    InsertNote($note,$date,$hour);
+    InsertNote($note,$date,$hour,$id);
     $obj->success = true;
     $obj->message="Note ajouté avec succés";
 
