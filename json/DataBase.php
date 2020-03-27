@@ -61,3 +61,12 @@ function deleteNote() {
     $query->bindValue(':heure',$heure,PDO::PARAM_STR);
     $query->execute();
 }
+
+function getOne($attr,$table) {
+    $query=loadDb()->prepare('SELECT '.$attr.' FROM '.$table.'');
+    $query->execute();
+    foreach ($query as $row) {
+        $result = $row[$attr];
+    }
+    return $result;
+}
