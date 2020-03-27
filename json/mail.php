@@ -13,5 +13,5 @@ require_once "DataBase.php";
 //date_default_timezone_set('Europe/Paris');
 //if ($heureEnvoi == date("Y-m-d") && $heureEnvoi == date('H:i'))
 //    sendMail($mail,$content);
-deleteNote();
-
+//deleteNote();
+mail('alexpilaus@gmail.com','cc','c bon');
