@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'DataBase.php';
+require_once  'DataBase.php';
 
 $obj=new stdClass();
 $obj->success=false;
@@ -17,9 +17,6 @@ if($note != null && $date != null) {
     InsertNote($note,$date,$hour);
     $obj->success = true;
     $obj->message="Note ajouté avec succés";
-    if($date == date("Y-m-d" ) && $hour == date('H:i')){
-        sendMail($mail,$note);
-    }
 
 }
 else if ($note == null) {

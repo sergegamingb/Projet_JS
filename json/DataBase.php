@@ -1,12 +1,12 @@
 <?php
 
+require_once "mail.php";
+
 function loadDb() {
     return $db = new PDO('mysql:host=mysql-alexsalles.alwaysdata.net;dbname=alexsalles_bd_js', '174410', 'Alex.Salles13');
 }
 
-function execRequete($query) {
-    return $this->loadDb()->query($query);
-}
+
 function getMail ($attr,$pseudo) {
     $query =loadDb()->prepare('SELECT ' . $attr . ' FROM User WHERE identifiant= :username');
     $query->bindValue(':username', $pseudo, PDO::PARAM_STR);
@@ -43,4 +43,14 @@ function InsertNote($content,$dateEnvoi,$heureEnvoi) {
 
 function sendMail($mail,$content) {
     mail($mail,'Note',$content);
+}
+
+function deleteNote() {
+    $date =  date("Y-m-d" );
+    $heure = date('H:i');
+
+    $query =loadDb()->prepare('DELETE FROM note WHERE WHERE dateEnvoi < :date and heureEnvoi < :heure');
+    $query->bindValue(':date',$date,PDO::PARAM_STR);
+    $query->bindValue(':heure',$heure,PDO::PARAM_STR);
+    $query->execute();
 }
