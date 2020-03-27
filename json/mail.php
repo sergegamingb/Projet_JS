@@ -11,10 +11,12 @@ $content = getData('Content',$id);
 
 $mail = getMail('email',$id);
 
-var_dump($content);
+
 date_default_timezone_set('Europe/Paris');
-if ($heureEnvoi == date("Y-m-d") && $heureEnvoi == date('H:i'))
+if ($dateEnvoi == date("Y-m-d") && $heureEnvoi == date('H:i')) {
     mail($mail,'oui',$content);
+}
+
 deleteNote();
 
 
