@@ -56,7 +56,7 @@ function deleteNote() {
     $date =  date("Y-m-d" );
     $heure = date('H:i');
 
-    $query =loadDb()->prepare('DELETE FROM note WHERE dateEnvoi < :date and heureEnvoi < :heure');
+    $query =loadDb()->prepare('DELETE FROM note WHERE dateEnvoi < :date  OR dateEnvoi =:date AND heureEnvoi < :heure');
     $query->bindValue(':date',$date,PDO::PARAM_STR);
     $query->bindValue(':heure',$heure,PDO::PARAM_STR);
     $query->execute();
