@@ -13,7 +13,7 @@ $mail = getMail('email',$id);
 
 
 date_default_timezone_set('Europe/Paris');
-if ($dateEnvoi == date("Y-m-d") && $heureEnvoi == date('H:i')) {
+if ($dateEnvoi == date("Y-m-d") ) {
     mail($mail,'oui',$content);
 }
 
