@@ -13,8 +13,8 @@ $mail = getMail('email',$id);
 
 
 date_default_timezone_set('Europe/Paris');
-if ($dateEnvoi == date("Y-m-d")) {
-    mail($mail,'Note',$content);
+if ($dateEnvoi == date("Y-m-d") && $heureEnvoi < date("H:i")) {
+    mail((string)$mail,'Note', (string)$content);
     var_dump($content);
     deleteNote();
 
