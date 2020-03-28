@@ -20,7 +20,7 @@ foreach ($user as $row ) {
              $hour = $item['heureEnvoi'];
              $content = $item['Content'];
              $mail = $item['emailNote'];
-             if ($date == date("Y-m-d") && $hour < date("H:i")) {
+             if ($date == date("Y-m-d") && $hour == date("H:i")) {
                      mail($mail,'Note', $content);
                      deleteNote();
              }
