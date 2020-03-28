@@ -15,7 +15,6 @@ foreach ($user as $row ) {
         $note= getData('dateEnvoi,heureEnvoi,Content,emailNote',$id);
 
          foreach ($note as $item ) {
-
              $date = $item['dateEnvoi'];
              $hour = $item['heureEnvoi'];
              $content = $item['Content'];
