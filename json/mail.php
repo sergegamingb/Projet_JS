@@ -8,13 +8,13 @@ $dateEnvoi = getData('dateEnvoi',$id);
 $heureEnvoi = getData('heureEnvoi',$id);
 $content = getData('Content',$id);
 
-var_dump($dateEnvoi);
+var_dump($content);
 $mail = getMail('email',$id);
 
 
 date_default_timezone_set('Europe/Paris');
 if ($dateEnvoi == date("Y-m-d") && $heureEnvoi < date("H:i")) {
-    mail((string)$mail,'Note', (string)$content);
+    mail($mail,'Note', (string)$content);
     var_dump($content);
     deleteNote();
 

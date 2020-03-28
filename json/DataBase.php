@@ -10,7 +10,9 @@ function getElement ($attr,$attr2,$attr3,$table) {
     $query =loadDb()->prepare('SELECT ' . $attr . ' FROM '.$table.' WHERE '.$attr3.'= :attribut');
     $query->bindValue(':attribut', $attr2, PDO::PARAM_STR);
     $query->execute();
-    $result=$query->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($query as $row) {
+        $result = $row[$attr];
+    }
     return $result;
 }
 
@@ -29,7 +31,9 @@ function getUser($attr, $attr1, $attr2,$table)
 function getMail($attr,$id) {
     $query=loadDb()->prepare('SELECT '.$attr.' from User where Id in(SELECT UserId from note where UserId ='.$id.' )');
     $query->execute();
-    $result=$query->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($query as $row) {
+        $result = $row[$attr];
+    }
     return $result;
 }
 function InsertNote($content,$dateEnvoi,$heureEnvoi, $id) {
