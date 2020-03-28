@@ -14,18 +14,19 @@ $info = getElement('Id, email',$pseudo,'identifiant','User');
 foreach ($info as $row) {
     $id = $row['Id'];
     $mail = $row['email'];
-}
-if($note != null && $date != null) {
-    InsertNote($note,$date,$hour,$id,$mail);
-    $obj->success = true;
-    $obj->message="Note ajouté avec succés";
+    if($note != null && $date != null) {
+        InsertNote($note,$date,$hour,$id,$mail);
+        $obj->success = true;
+        $obj->message="Note ajouté avec succés";
 
-}
-else if ($note == null) {
-    $obj->message="Veuillez saisir une note puis réesayer";
-}
-else if ($date == null) {
-    $obj->message ="Date manquante ou indisponible veuillez réesayer";
+    }
+    else if ($note == null) {
+        $obj->message="Veuillez saisir une note puis réesayer";
+    }
+    else if ($date == null) {
+        $obj->message ="Date manquante ou indisponible veuillez réesayer";
+    }
+
 }
 
 
