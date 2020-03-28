@@ -9,16 +9,15 @@ $date = htmlspecialchars($_POST['dates']);
 $note = htmlspecialchars($_POST['mNote']);
 $hour = htmlspecialchars($_POST['hour']);
 $pseudo=$_SESSION['user'];
-$info = getElement('Id, email',$pseudo,'identifiant','User');
+$info = getElement('Id',$pseudo,'identifiant','User');
 
 foreach ($info as $row) {
     $id = $row['Id'];
-    $mail = $row['email'];
+    //$mail = $row['email'];
     if($note != null && $date != null) {
-        InsertNote($note,$date,$hour,$id,$mail);
+        InsertNote($note,$date,$hour,$id);
         $obj->success = true;
         $obj->message="Note ajouté avec succés";
-
     }
     else if ($note == null) {
         $obj->message="Veuillez saisir une note puis réesayer";
@@ -26,7 +25,6 @@ foreach ($info as $row) {
     else if ($date == null) {
         $obj->message ="Date manquante ou indisponible veuillez réesayer";
     }
-
 }
 
 
