@@ -9,13 +9,14 @@ $date = htmlspecialchars($_POST['dates']);
 $note = htmlspecialchars($_POST['mNote']);
 $hour = htmlspecialchars($_POST['hour']);
 $pseudo=$_SESSION['user'];
-$info = getElement('Id',$pseudo,'identifiant','User');
+$info = getElement('Id,email',$pseudo,'identifiant','User');
 
 foreach ($info as $row) {
+
     $id = $row['Id'];
-    //$mail = $row['email'];
+    $mail = $row['email'];
     if($note != null && $date != null) {
-        InsertNote($note,$date,$hour,$id);
+        InsertNote($note,$date,$hour,$id,$mail);
         $obj->success = true;
         $obj->message="Note ajouté avec succés";
     }

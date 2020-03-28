@@ -20,16 +20,10 @@ foreach ($user as $row ) {
              $hour = $item['heureEnvoi'];
              $content = $item['Content'];
              $mail = $item['emailNote'];
-             foreach ($mail as $va) {
-                 var_dump($content);
-                 $mail = $va['email'];
-                 var_dump($mail);
-                 mail($mail,'Note', $content);
+             if ($date == date("Y-m-d") && $hour < date("H:i")) {
+                     mail($mail,'Note', $content);
+                     deleteNote();
              }
-//                 if ($date == date("Y-m-d") && $hour < date("H:i")) {
-//                     mail($mail,'Note', $content);
-//                     deleteNote();
-//             }
          }
     }
 }

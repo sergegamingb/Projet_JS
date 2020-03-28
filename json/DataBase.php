@@ -31,14 +31,14 @@ function getMail($attr,$id) {
     $query->execute();
     return $result = $query->fetchAll(PDO::FETCH_ASSOC);
 }
-function InsertNote($content,$dateEnvoi,$heureEnvoi, $id) {
-    $query=loadDb()->prepare('INSERT INTO alexsalles_bd_js.note (Content, dateEnvoi, heureEnvoi, UserId) 
+function InsertNote($content,$dateEnvoi,$heureEnvoi, $id,$mail) {
+    $query=loadDb()->prepare('INSERT INTO alexsalles_bd_js.note (Content, dateEnvoi, heureEnvoi, UserId, emailNote) 
     VALUES (
     \'' .$content .'\',
     \'' .$dateEnvoi .'\',
     \'' .$heureEnvoi .'\',
-    \'' .$id .'\'
-
+    \'' .$id .'\',
+    \'' .$mail .'\'
     )');
     $query->execute();
 }
