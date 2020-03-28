@@ -10,7 +10,6 @@ $note = htmlspecialchars($_POST['mNote']);
 $hour = htmlspecialchars($_POST['hour']);
 $pseudo=$_SESSION['user'];
 $info = getElement('Id,email',$pseudo,'identifiant','User');
-
 foreach ($info as $row) {
 
     $id = $row['Id'];

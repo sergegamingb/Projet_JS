@@ -15,11 +15,14 @@ foreach ($user as $row ) {
         $note= getData('dateEnvoi,heureEnvoi,Content,emailNote',$id);
 
          foreach ($note as $item ) {
+
              $date = $item['dateEnvoi'];
              $hour = $item['heureEnvoi'];
              $content = $item['Content'];
              $mail = $item['emailNote'];
-             if ($date == date("Y-m-d") && $hour == date("H:i")) {
+             $h2 = strtotime('+1 minute');
+
+             if ($date == date("Y-m-d") && $hour <  date('H:i', $h2)) {
                      mail($mail,'Note', $content);
                      deleteNote();
              }
