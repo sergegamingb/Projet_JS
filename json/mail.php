@@ -8,7 +8,7 @@ $dateEnvoi = getData('dateEnvoi',$id);
 $heureEnvoi = getData('heureEnvoi',$id);
 $content = getData('Content',$id);
 
-var_dump($id,$content,$dateEnvoi);
+var_dump($dateEnvoi);
 $mail = getMail('email',$id);
 
 
