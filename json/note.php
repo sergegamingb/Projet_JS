@@ -11,7 +11,6 @@ $hour = htmlspecialchars($_POST['hour']);
 $pseudo=$_SESSION['user'];
 $id = getElement('Id',$pseudo,'identifiant','User');
 
-
 if($note != null && $date != null) {
     InsertNote($note,$date,$hour,$id);
     $obj->success = true;
