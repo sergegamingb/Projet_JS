@@ -20,7 +20,7 @@ foreach ($user as $row ) {
              $hour = $item['heureEnvoi'];
              $content = $item['Content'];
              $mail = $item['emailNote'];
-             $h2 = strtotime('+1 minute');
+             $h2 = strtotime('-1 minute');
 
              if ($date == date("Y-m-d") && $hour <  date('H:i', $h2)) {
                      mail($mail,'Note', $content);
