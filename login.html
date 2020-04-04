@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Connexion</title>
+    <title>Connexion | Inscription</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/register.js"></script>
 
     <!--Made with love by Mutiullah Samim -->
 
@@ -22,7 +23,7 @@
 <body>
 <div class="container">
     <div class="d-flex justify-content-center h-100">
-        <div class="card">
+        <div class="card" id="login">
             <div class="card-header">
                 <h3>Se Connecter</h3>
             </div>
@@ -32,20 +33,63 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" name="username" class="form-control" placeholder="username">
-
+                        <input type="text" name="username" class="form-control" placeholder="pseudo">
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" name="password" class="form-control" placeholder="password">
+                        <input type="password" name="password" class="form-control" placeholder="mot de passe">
                     </div>
                     <div class ="card-body">
                         <div class="d-flex justify-content-center msg"  id="messages" style="display: none"></div>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Connexion" class="btn float-right login_btn">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-center links">
+                    Pas encore de compte? <a href="#" id="sign">S'inscrire</a>
+                </div>
+            </div>
+        </div>
+        <div id="form-reg" class="card" style="display: none">
+            <div class="card-header">
+                <h3>S'inscrire</h3>
+            </div>
+            <div class="card-body">
+                <form id="form-register" action="json/register.php" method="post">
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" name="user" class="form-control" placeholder="pseudo" maxlength="25">
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <input type="text" name="email" class="form-control" placeholder="email">
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" name="pass" class="form-control" placeholder="mot de passe" maxlength="20">
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" name="pass2" class="form-control" placeholder="vérification mot de passe" maxlength="20">
+                    </div>
+                    <div class ="card-body">
+                        <div class="d-flex justify-content-center msg"  id="msgReg" style="display: none"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="S'inscrire" class="btn float-right login_btn">
                     </div>
                 </form>
             </div>

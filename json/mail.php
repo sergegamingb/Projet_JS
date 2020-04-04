@@ -12,7 +12,7 @@ foreach ($user as $row ) {
     foreach ($id as $value) {
 
         $id = $value['Id'];
-        $note= getData('dateEnvoi,heureEnvoi,Content,emailNote',$id);
+        $note= getData('dateEnvoi,heureEnvoi,Content,emailNote,Objet',$id);
 
          foreach ($note as $item ) {
 
@@ -20,9 +20,10 @@ foreach ($user as $row ) {
              $hour = $item['heureEnvoi'];
              $content = $item['Content'];
              $mail = $item['emailNote'];
+             $objet =$item['Objet'];
 
              if ($date == date("Y-m-d") && $hour < date("H:i")) {
-                     mail($mail,'Note', $content);
+                     mail($mail,$objet, $content);
                      deleteNote();
              }
          }

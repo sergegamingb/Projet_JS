@@ -33,7 +33,8 @@
                             $('.material-button-anim').fadeOut();
                             $('#addNote').append('<div class="card">' +
                                 '<div class="card-body">' +
-                                '<textarea type="text" name="mNote" class="form-control" placeholder="Écrivez votre note ici">' +
+                                '<input type="text" name="object" class="form-control" placeholder="Objet de la note" maxlength="30">' +
+                                '<textarea type="text" name="mNote" class="form-control" placeholder="Écrivez votre note ici" maxlength="100">' +
                                 '</textarea>' +
                                 '<div class="d-flex justify-content-center" id="accueil">' +
                                 '<div role="button" class="btn login_btn addon">Choisir une date</div>' +
