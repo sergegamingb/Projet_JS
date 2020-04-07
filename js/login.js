@@ -19,6 +19,15 @@
             });
             return false;
         });
+        $('#reg').one('click',function () {
+            $.ajax({
+                url:$(this).attr('action'),
+                method:$(this).attr('method')
+            }).done(function () {
+                $('#form-reg').fadeOut(0);
+                $('#login').fadeIn();
+            })
+        });
 
     });
 

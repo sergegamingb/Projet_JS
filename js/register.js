@@ -6,7 +6,7 @@
                 url:$(this).attr('action'),
                 method:$(this).attr('method')
             }).done(function () {
-                $('#login').remove();
+                $('#login').fadeOut(0);
                 $('#form-reg').fadeIn();
             })
         });

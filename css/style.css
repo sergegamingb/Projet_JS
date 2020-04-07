@@ -123,10 +123,6 @@ a.dropdown-item {
 .dropdown-item.active, .dropdown-item:active{color:#212529;}
 .dropdown-item:focus, .dropdown-item:hover{background:#fec400;}
 
-
-
-
-
 .material-button-anim {
     position: relative;
     margin: 0 auto 20px;
@@ -162,5 +158,17 @@ a.dropdown-item {
 }
 
 #accueil {
-    padding: .5rem 1rem
+    padding: .5rem 1rem;
+}
+
+#choose {
+    padding: .5rem 1rem;
+}
+
+textarea {
+    resize: none;
+}
+
+.input {
+    margin: .2rem 0rem !important;
 }

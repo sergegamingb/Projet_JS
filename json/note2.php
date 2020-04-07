@@ -10,11 +10,11 @@ $note = htmlspecialchars($_POST['mNote']);
 $hour = htmlspecialchars($_POST['hour']);
 $object = htmlspecialchars($_POST['object']);
 $pseudo=$_SESSION['user'];
-$info = getElement('Id,email',$pseudo,'identifiant','User');
+$mail = htmlspecialchars($_POST['mail']);
+$info = getElement('Id',$pseudo,'identifiant','User');
 foreach ($info as $row) {
 
     $id = $row['Id'];
-    $mail = $row['email'];
     if($note != null && $date != null && $hour != null && $object != null ) {
         InsertNote($note,$date,$hour,$id,$mail,$object);
         $obj->success = true;
@@ -22,6 +22,9 @@ foreach ($info as $row) {
     }
     else if ($object == null) {
         $obj->message="Veullez saisir un objet puis réesayer";
+    }
+    else if ($mail == null) {
+        $obj->message ="Mail vide veuillez le remplir et réessayer";
     }
     else if ($note == null) {
         $obj->message="Veuillez saisir une note puis réesayer";
@@ -38,3 +41,4 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 header('Content-type: application/json');
 
 echo json_encode($obj);
+

@@ -22,14 +22,13 @@
                 <div  class="name"></div>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link">Accueil</a>
+                <a href="index.html" class="nav-link">Accueil</a>
             </li>
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navdrop" role="button" data-toggle="dropdown" data-hover="dropdown">Services</a>
                 <div class="dropdown-menu menu" aria-labelledby="navdrop">
-                    <a href="#" class="dropdown-item">Nouvelles notes</a>
+                    <a href="note.html" class="dropdown-item">Nouvelles notes</a>
                     <a href="#" class="dropdown-item">Mes notes</a>
-                    <a href="#" class="dropdown-item">Anciennes notes</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -39,5 +38,21 @@
     </div>
     <div id="accueil" ></div>
 </nav>
+<div class="d-flex justify-content-center msgs" id="success"></div>
+<form id="form-date" action="json/note2.php" method="post">
+    <div id="addNote" class="justify-content-center d-flex">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" name="object" class="form-control input" placeholder="Objet de la note" maxlength="30">
+                <input type="email" name="mail" class="form-control input" placeholder="Envoyer l'email à" maxlength="30">
+                <textarea type="text" name="mNote" class="form-control input" placeholder="Écrivez votre note ici" rows="7" ></textarea>
+                <div class="d-flex justify-content-center" id="choose">
+                    <div role="button" class="btn login_btn addon">Choisir une date</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="addDate" class="d-flex justify-content-center"></div>
+</form>
 </body>
 </html>

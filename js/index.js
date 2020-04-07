@@ -30,11 +30,12 @@
                             url: 'json/log.php',
                             method: 'get'
                         }).done(function () {
-                            $('.material-button-anim').fadeOut();
+                            $('#hello').remove();
+                            $('.material-button-anim').remove();
                             $('#addNote').append('<div class="card">' +
                                 '<div class="card-body">' +
-                                '<input type="text" name="object" class="form-control" placeholder="Objet de la note" maxlength="30">' +
-                                '<textarea type="text" name="mNote" class="form-control" placeholder="Écrivez votre note ici" maxlength="100">' +
+                                '<input type="text" name="object" class="form-control input" placeholder="Objet de la note" maxlength="30">' +
+                                '<textarea type="text" name="mNote" class="form-control input" placeholder="Écrivez votre note ici" rows="7">' +
                                 '</textarea>' +
                                 '<div class="d-flex justify-content-center" id="accueil">' +
                                 '<div role="button" class="btn login_btn addon">Choisir une date</div>' +
@@ -43,12 +44,12 @@
                                 '</div>');
                             $('.addon').one('click', function () {
                                 $('#addDate').append('<div class="card"><div class="card-body">' +
-                                    '<input type="date"  name="dates" max="9999-12-31" min="1000-01-01" class="form-control">' +
-                                    '<input type="time" name="hour" max="839:59" min="-839:59" class="form-control">' +
+                                    '<input type="date"  name="dates" max="9999-12-31" min="1000-01-01" class="form-control input">' +
+                                    '<input type="time" name="hour" max="839:59" min="-839:59" class="form-control input">' +
                                     '<div class="d-flex justify-content-center msg" id="messageError"></div>' +
                                     '<div class="d-flex justify-content-center" id="accueil">' +
                                     '<input type="submit" value="Ajouter note" class="btn login_btn" id="addDate"></div>' +
-                                    '</div></div>')
+                                    '</div></div>');
                                 $('.addon').remove();
                             });
                         });
