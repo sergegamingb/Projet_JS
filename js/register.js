@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     $(() => {
-        $('#sign').one('click',function () {
+        $('#sign').on('click',function () {
             $.ajax({
                 url:$(this).attr('action'),
                 method:$(this).attr('method')

@@ -172,3 +172,14 @@ textarea {
 .input {
     margin: .2rem 0rem !important;
 }
+
+.switch {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+.switch:hover {
+    color: #0095ff;
+    text-decoration: underline;
+    cursor: pointer;
+}

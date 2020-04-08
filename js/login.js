@@ -19,7 +19,7 @@
             });
             return false;
         });
-        $('#reg').one('click',function () {
+        $('#reg').on('click',function () {
             $.ajax({
                 url:$(this).attr('action'),
                 method:$(this).attr('method')
