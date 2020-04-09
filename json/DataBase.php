@@ -1,5 +1,6 @@
 <?php
 
+date_default_timezone_set('Europe/Paris');
 
 function loadDb() {
     return $db = new PDO('mysql:host=mysql-alexsalles.alwaysdata.net;dbname=alexsalles_bd_js', '174410', 'Alex.Salles13');
@@ -39,7 +40,6 @@ function get($attr,$table,$attr1) {
 function getMail($attr,$id) {
     $query=loadDb()->prepare('SELECT '.$attr.' from User where Id in(SELECT UserId from note where UserId ='.$id.' )');
     $query->execute();
-    $query->execute();
     return $result = $query->fetchAll(PDO::FETCH_ASSOC);
 }
 function InsertNote($content,$dateEnvoi,$heureEnvoi, $id,$mail,$objet) {
@@ -74,10 +74,14 @@ function deleteNote() {
     $query->bindValue(':heure',$heure,PDO::PARAM_STR);
     $query->execute();
 }
+function delete($id) {
+    $query = loadDb()->prepare('DELETE FROM note WHERE Id =:id');
+    $query->bindValue(':id',$id,PDO::PARAM_INT);
+    $query->execute();
+}
 
 function getOne($attr,$table) {
     $query=loadDb()->prepare('SELECT '.$attr.' FROM '.$table.'');
-    $query->execute();
     $query->execute();
     return $result = $query->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -85,6 +89,10 @@ function getOne($attr,$table) {
 function getData($attr,$id) {
     $query=loadDb()->prepare('SELECT '.$attr.' FROM note where UserId in (select Id from User where UserId='.$id.')');
     $query->execute();
+    return $result = $query->fetchAll(PDO::FETCH_ASSOC);
+}
+function getNote($attr,$id) {
+    $query=loadDb()->prepare('SELECT '.$attr.' FROM note where UserId in (select Id from User where UserId='.$id.') order by dateEnvoi, heureEnvoi asc');
     $query->execute();
     return $result = $query->fetchAll(PDO::FETCH_ASSOC);
 }

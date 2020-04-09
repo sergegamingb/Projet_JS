@@ -18,7 +18,7 @@ foreach ($info as $row) {
     if($note != null && $date != null && $hour != null && $object != null ) {
         InsertNote($note,$date,$hour,$id,$mail,$object);
         $obj->success = true;
-        $obj->message="Note ajouté avec succés";
+        $obj->message="Note ajoutée avec succés";
     }
     else if ($object == null) {
         $obj->message="Veullez saisir un objet puis réesayer";
