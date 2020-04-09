@@ -79,6 +79,11 @@ function delete($id) {
     $query->bindValue(':id',$id,PDO::PARAM_INT);
     $query->execute();
 }
+function update($id,$attr, $value) {
+    $query = loadDb()->prepare('UPDATE note SET '.$attr.'='.$value.' WHERE Id = :id');
+    $query->bindValue(':id',$id,PDO::PARAM_INT);
+    $query->execute();
+}
 
 function getOne($attr,$table) {
     $query=loadDb()->prepare('SELECT '.$attr.' FROM '.$table.'');

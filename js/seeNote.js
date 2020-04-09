@@ -15,11 +15,10 @@
                 id =data.note[i]['Id'];
                 info = '<div class="col-3 d-flex justify-content-around"><div class="card">' +
                     '<div class=" remove fa fa-times btn btn-danger" id= ' + id + ' ></div>' +
-                    '<div class="card-body content"> '+ data.note[i]['Content']+'</div>' +
-                    '<input type="button" value="Modifier note" class="login_btn btn ">' +
+                    '<div class="card-body "> Objet : '+ data.note[i]['Objet']+'</div>' +
+                    '<div class="card-body "> '+ data.note[i]['Content']+'</div>' +
                     '</div></div>';
                 $('#note').append(info);
-
             }
         });
         $(document).on('click','.remove',function (event) {
@@ -34,7 +33,7 @@
                     $('#'+id).parent().parent().remove();
                 }
             })
-        })
+        });
     });
 
 }) ();

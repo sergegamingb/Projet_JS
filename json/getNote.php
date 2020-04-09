@@ -11,7 +11,7 @@ $id = getElement('Id',$user,'identifiant','User');
 
 foreach ($id as $value) {
     $id = $value['Id'];
-    $note= getNote('Content,Id',$id);
+    $note= getNote('Content,Id,Objet',$id);
     $obj->note = $note;
     if ($note == null)
     {
