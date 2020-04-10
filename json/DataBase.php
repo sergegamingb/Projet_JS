@@ -80,8 +80,7 @@ function delete($id) {
     $query->execute();
 }
 function update($id,$attr, $value) {
-    $query = loadDb()->prepare('UPDATE note SET '.$attr.'='.$value.' WHERE Id = :id');
-    $query->bindValue(':id',$id,PDO::PARAM_INT);
+    $query = loadDb()->prepare('UPDATE note SET  '.$attr.'=\''.$value.'\'  WHERE Id= '.$id.' ');
     $query->execute();
 }
 

@@ -34,8 +34,8 @@
                             $('.material-button-anim').remove();
                             $('#addNote').append('<div class="card">' +
                                 '<div class="card-body">' +
-                                '<input type="text" name="object" class="form-control input" placeholder="Objet de la note" maxlength="30">' +
-                                '<textarea type="text" name="mNote" class="form-control input" placeholder="Écrivez votre note ici" rows="7">' +
+                                '<input type="text" name="object" class="form-control input" placeholder="Objet de la note" maxlength="40">' +
+                                '<textarea type="text" name="mNote" class="form-control input" placeholder="Écrivez votre note ici" rows="7" maxlength="150">' +
                                 '</textarea>' +
                                 '<div class="d-flex justify-content-center" id="accueil">' +
                                 '<div role="button" class="btn login_btn addon">Choisir une date</div>' +
