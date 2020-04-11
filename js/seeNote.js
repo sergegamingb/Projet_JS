@@ -14,7 +14,7 @@
                 let id =data.note[i]['Id'];
                 form ='<div class="card-body" id="form-edit'+id+'" style="display: none">' +
                     '<input type="text" name="object" class="form-control input" placeholder="Objet de la note (max 40 caractères) " maxlength="40" value='+data.note[i]['Objet']+'> ' +
-                    '<input type="email" name="mail" class="form-control input" placeholder="Envoyer la note à" value='+data.note[i]['emailNote']+'> ' +
+                    '<input type="email" name="mail" class="form-control input" placeholder="Envoyer la note à" maxlength="50" value='+data.note[i]['emailNote']+'> ' +
                     '<textarea type="text" name="mNote" class="form-control input" placeholder="Écrivez votre note ici (max 200 caractères)" rows="7" maxlength="200" >'+data.note[i]['Content']+'</textarea> ' +
                     '<input type="date"  name="dates" max="9999-12-31" min="1000-01-01" class="form-control input" value='+data.note[i]['dateEnvoi']+'> ' +
                     '<input type="time" name="hour" max="839:59" min="-839:59" class="form-control input" value='+data.note[i]['heureEnvoi']+'> ' +
