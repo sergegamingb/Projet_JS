@@ -11,16 +11,18 @@
                 $('#nonote').html(data.message).fadeIn();
             }
             for (let i in data.note) {
-                form ='<div class="card-body" id="form-edit">' +
-                '<input type="text" name="object" class="form-control input" placeholder="Objet de la note" maxlength="40" value='+data.note[i]['Objet']+'> ' +
-                '<input type="email" name="mail" class="form-control input" placeholder="Envoyer la note à" maxlength="30" value='+data.note[i]['emailNote']+'> ' +
-                '<textarea type="text" name="mNote" class="form-control input" placeholder="Écrivez votre note ici" rows="7" maxlength="150" >'+data.note[i]['Content']+'</textarea> ' +
-                '<input type="date"  name="dates" max="9999-12-31" min="1000-01-01" class="form-control input" value='+data.note[i]['dateEnvoi']+'> ' +
-                '<input type="time" name="hour" max="839:59" min="-839:59" class="form-control input" value='+data.note[i]['heureEnvoi']+'> ' +
-                '<div class="d-flex justify-content-center msg" id="messageError"></div> ' +
-                '<div class="d-flex justify-content-center" id="choose"> ' +
-                '<input type="submit" value="Modifier note" class="btn login_btn " id="update">' +
-                '</div> </div>';
+                let id =data.note[i]['Id'];
+                form ='<div class="card-body" id="form-edit'+id+'" style="display: none">' +
+                    '<input type="text" name="object" class="form-control input" placeholder="Objet de la note" maxlength="40" value='+data.note[i]['Objet']+'> ' +
+                    '<input type="email" name="mail" class="form-control input" placeholder="Envoyer la note à" maxlength="30" value='+data.note[i]['emailNote']+'> ' +
+                    '<textarea type="text" name="mNote" class="form-control input" placeholder="Écrivez votre note ici" rows="7" maxlength="150" >'+data.note[i]['Content']+'</textarea> ' +
+                    '<input type="date"  name="dates" max="9999-12-31" min="1000-01-01" class="form-control input" value='+data.note[i]['dateEnvoi']+'> ' +
+                    '<input type="time" name="hour" max="839:59" min="-839:59" class="form-control input" value='+data.note[i]['heureEnvoi']+'> ' +
+                    '<div class="d-flex justify-content-center msg" id="messageError"></div> ' +
+                    '<div class="d-flex justify-content-center" id="choose"> ' +
+                    '<input type="submit" value="Modifier note" class="btn login_btn " id="update">' +
+                    '</div> </div>';
+                $('#editNote').append(form);
             }
         });
         $.ajax({
@@ -63,7 +65,8 @@
             $('#editNote').append(
                 '<form id="editable" method="post" action=/json/editNote.php?id='+id+'></form>')
                 .fadeIn();
-            $('#editable').append(form);
+            $('#editable').append(
+                $('#form-edit'+id).fadeIn());
         });
         $(document).on('submit','#editable',function () {
             $.ajax({
@@ -73,7 +76,7 @@
             }).done (function (data) {
                 if (data.success)
                 {
-                   $('#editable').parent().remove();
+                    $('#editable').parent().fadeOut(0);
                     $('#success').html(data.message).fadeIn();
                     location.reload();
                 } else {
